@@ -1,0 +1,25 @@
+* {
+    box-sizing:border-box;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(121, 42, 42);
+    font-family: "Times New Roman", Roboto,'sans-serif';
+
+}
+
+main {
+    background-color: white;
+    width: 70%;
+    margin: 0 auto 1rem auto;
+    padding: 0 1rem 2rem 1rem;
+
+}
+
+header {
+    background-color: lightgrey;
+    border-radius: .45rem;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+}
