@@ -8,6 +8,8 @@
     <link rel="icon" href="images/pizza-icon.png">
     <!-- stylesheet -->
      <link rel="stylesheet" href="styles/pizza-styles.css">
+     <!-- javascript -->
+    <script src="pizza.js" defer></script>
 </head>
 <body>
     
@@ -33,11 +35,16 @@
         <form id="pizza-form" action="#" method="get">
 
             <!-- Contact Information -->
-             <label for="fname">First Name:</label>
+             <label for="fname">First Name:
+                <span class="err" id="err-fname">First name is required</span>
+             </label>
              <input type="text" id="fname" name="fname">
-             <label for="lname">Last Name:</label>
+             <label for="lname">Last Name:
+                <span class="err" id="err-lname">Last name is required</span></label>
              <input type="text" id="lname" name="lname">
-             <label for="email">Email Address:</label>
+             <label for="email">Email Address:
+                <span class="err" id="err-email">Incorrect email format</span>
+             </label>
              <input type="text" id="email" name="email">
 
 
@@ -47,6 +54,7 @@
     <!-- Delivery & Pickup Options -->
     <fieldset>
         <legend>Select Pickup or Delivery</legend>
+        <span class="err" id="err-method">Please select delivery or pickup. Or you won't get pizza.</span>
         <label for="pickup">
             <input type="radio" id="pickup" value="pickup" name="method">Pickup
         </label>
@@ -57,6 +65,7 @@
             <!-- Toppings -->
             <fieldset>
                 <legend>Select Toppings</legend>
+                <span class="err" id="err-toppings">Pizza size required!</span>
                 <label for="pepperoni">
                     <input type="checkbox"
                            id="pepperoni"
@@ -94,6 +103,7 @@
             <!-- Size -->
             <fieldset>
                 <legend>Pizza Size</legend>
+                <span class="err" id="err-size">Pizza size required!</span>
                 <select id="size" name="size">
                     <option value="none">-- Select a size --</option>
                     <option value="small">Small</option>
