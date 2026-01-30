@@ -6,6 +6,7 @@ const app = express();
 
 // Define the port number where our server will listen
 const PORT = 3000;
+
 // Enable static file serving
 app.use(express.static('public'));
 
