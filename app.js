@@ -17,6 +17,15 @@ app.get('/', (req, res) => {
   res.sendFile(`${import.meta.dirname}/views/home.html`);
 });
 
+// Contact route
+app.get('/contact-us', (req, res) => {
+  res.sendFile(`${import.meta.dirname}/views/contact.html`);
+});
+
+// Thank you route
+app.get('/thank-you', (req, res) => {
+  res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+});
 
 // Start the server and listen on the specified port 
 app.listen(PORT, () => {
