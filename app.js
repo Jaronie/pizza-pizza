@@ -13,6 +13,7 @@ app.use(express.static('public'));
 //Allow express to read form data
 app.use(express.urlencoded({ extended: true }));
 
+const orders = []; // Array to store orders in memory
 
 // Define a default "route" ('/')
 // req: contains information about the incoming request
@@ -31,23 +32,28 @@ app.get('/thank-you', (req, res) => {
   res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
 });
 
+// Admin route
+app.get('/admin', (req, res) => {
+  res.send(orders);
+});
+
 // Submit order route
 app.post('/submit-order', (req, res) => {
   
   // Create JSON object to store order data
   const order = {
-    fname: req.query.fname,
-    lname: req.query.lname,
-    emaiL: req.query.email,
-    method: req.query.method,
-    size: req.query.size,
-    toppings: req.query.toppings,
-    comment: req.query.comment,
+    fname: req.body.fname,
+    lname: req.body.lname,
+    email: req.body.email,
+    method: req.body.method,
+    size: req.body.size,
+    toppings: req.body.toppings ? req.body.toppings : "none",
+    comment: req.body.comment ? req.body.comment : "none",
     timestamp: new Date()
   };
-  res.send(order);
-  
+  orders.push(order);
 
+  res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
 });
 
 // Start the server and listen on the specified port 
