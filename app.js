@@ -27,10 +27,7 @@ app.get('/contact-us', (req, res) => {
   res.sendFile(`${import.meta.dirname}/views/contact.html`);
 });
 
-// Thank you route
-app.get('/thank-you', (req, res) => {
-  res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
-});
+
 
 // Admin route
 app.get('/admin', (req, res) => {
