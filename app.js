@@ -61,9 +61,9 @@ app.post('/submit-order', (req, res) => {
 
 // Create a pool (bucket) of database connections
 const pool = mysql2.createPool({
-    host: '***',
-    user: '***',
-    password: '***',
+    host: '24.199.115.154',
+    user: 'jaronb',
+    password: '06072006',
     database: 'pizza_db',
     port: 3306
 }).promise();
