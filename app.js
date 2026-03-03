@@ -7,7 +7,8 @@ import mysql2 from 'mysql2';
 // Import dotenv
 import dotenv from 'dotenv';
 
-// 
+// Configuring dotenv to load .env variables
+dotenv.config();
 
 
 // Create an instance of an Express application
@@ -66,10 +67,10 @@ app.post('/submit-order', (req, res) => {
 
 // Create a pool (bucket) of database connections
 const pool = mysql2.createPool({
-    host: '24.199.115.154',
-    user: 'jaronb',
-    password: '06072006',
-    database: 'pizza_db',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     port: 3306
 }).promise();
 
