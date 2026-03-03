@@ -4,6 +4,11 @@ import express from 'express';
 // Import MySQL
 import mysql2 from 'mysql2';
 
+// Import dotenv
+import dotenv from 'dotenv';
+
+// 
+
 
 // Create an instance of an Express application
 const app = express();
