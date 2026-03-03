@@ -2,7 +2,7 @@
 import express from 'express';
 
 // Import MySQL
-import mysql from 'mysql2';
+import mysql from 'mysql';
 
 
 // Create an instance of an Express application
