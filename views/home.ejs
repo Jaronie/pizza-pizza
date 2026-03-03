@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baloney Pizza</title>
+    <title>Poppa's Pizza</title>
+
     <!-- favicon -->
-    <link rel="icon" href="/images/pizza-icon.png">
+    <link rel="icon" href="images/pizza-slice.jpg">
 
     <!-- stylesheet -->
-    <link rel="stylesheet" href="/styles/pizza-styles.css">
+     <link rel="stylesheet" href="styles/pizza-styles.css">
 
-    <!-- javascript -->
-    <script src="/js/pizza.js" defer></script>
+    <!-- JavaScript -->
+    <script src="pizza.js" defer></script>
 </head>
 <body>
-    
     <main>
         <header>
-            <!--This is our pizza guy icon.-->
-            <img src="/images/pizza-dude.png" alt="Pizza Guy">
-
-            <!-- Pizza Website Main Page-->
-                <h1>Welcome to Baloney Pizza</h1>
-                <h2>
-                    Despite our name, we don't serve baloney on our pizzas. We have, however, served customers for more than 500 years!
-                </h2>
-                <hr>
-                <p>
-                    Check us out. Or not. - CEO @ Baloney Pizza, John Pizza Baloney.
-                </p>
-                <!-- Contact Button -->
-                <a id="contact-button" href="/contact-us" role="button">Contact Us</a>
+            <img src="images/pizza-guy.png" alt="pizza guy">
+            <h1>Welcome to Baloney Pizzaa</h1>
+            <h2>We've been serving pizza for over 500 years. We don't serve baloney on pizza, however!</h2>
+            <hr>
+            <p>Check us out, yo</p>
+            <a id="contact-button" href="/contact-us" role="button">Contact Us</a>
         </header>
-            <fieldset>
-        <legend>Contact Information</legend>
-        <!-- post method = more secure than "get"-->
+
+        <!-- post method is more secure than get -->
         <form id="pizza-form" action="/submit-order" method="post">
 
-            <!-- Contact Information -->
-             <label for="fname">First Name:
-                <span class="err" id="err-fname">First name is required</span>
-             </label>
-             <input type="text" id="fname" name="fname">
-             <label for="lname">Last Name:
-                <span class="err" id="err-lname">Last name is required</span></label>
-             <input type="text" id="lname" name="lname">
-             <label for="email">Email Address:
-                <span class="err" id="err-email">Incorrect email format</span>
-             </label>
-             <input type="text" id="email" name="email">
+            <!-- Contact Info -->
+            <fieldset>
+                <legend>Contact Info</legend>
+                <label for="fname">First Name: 
+                    <span class="err" id="err-fname">
+                        First name is required
+                    </span>
+                </label>
+                <input type="text" id="fname" name="fname">
+                <label for="lname">Last Name:
+                    <span class="err" id="err-lname">
+                        Last name is required
+                    </span>
+                </label>
+                <input type="text" id="lname" name="lname">
+                <label for="email">Email Address:
+                    <span class="err" id="err-email">
+                        Email is required
+                    </span>
+                </label>
+                <input type="text" id="email" name="email">
+            </fieldset> 
 
-
-        <!-- Fieldsets & Other Information -->
-    </fieldset>
-
-    <!-- Delivery & Pickup Options -->
-    <fieldset>
-        <legend>Select Pickup or Delivery</legend>
-        <span class="err" id="err-method">Please select delivery or pickup. Or you won't get pizza.</span>
-        <label for="pickup">
-            <input type="radio" id="pickup" value="pickup" name="method">Pickup
-        </label>
+            <!-- Pickup or Delivery -->
+            <fieldset>
+                <legend>Select Pickup or Delivery</legend>
+                    <span class="err" id="err-method">
+                        Please select pickup or delivery
+                    </span>
+                <label for="pickup">
+                    <input type="radio" id="pickup"
+                           value="pickup"
+                           name="method">Pickup
+                </label>
                 <label for="delivery">
-            <input type="radio" id="delivery" value="delivery" name="method">Delivery
-        </label>
-    </fieldset>
+                    <input type="radio" id="delivery"
+                           value="delivery"
+                           name="method">Delivery
+                </label>
+            </fieldset>  
+            
             <!-- Toppings -->
             <fieldset>
                 <legend>Select Toppings</legend>
-                <span class="err" id="err-toppings">Pizza size required!</span>
                 <label for="pepperoni">
                     <input type="checkbox"
                            id="pepperoni"
@@ -106,7 +109,9 @@
             <!-- Size -->
             <fieldset>
                 <legend>Pizza Size</legend>
-                <span class="err" id="err-size">Pizza size required!</span>
+                <span class="err" id="err-size">
+                    Please select a pizza size
+                </span>
                 <select id="size" name="size">
                     <option value="none">-- Select a size --</option>
                     <option value="small">Small</option>

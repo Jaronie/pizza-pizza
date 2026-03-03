@@ -1,6 +1,10 @@
 // Import the express module
 import express from 'express';
 
+// Import MySQL
+import mysql from 'mysql2';
+
+
 // Create an instance of an Express application
 const app = express();
 
@@ -31,7 +35,6 @@ app.get('/contact-us', (req, res) => {
 });
 
 
-
 // Admin route
 app.get('/admin', (req, res) => {
   res.send(orders);
@@ -54,6 +57,26 @@ app.post('/submit-order', (req, res) => {
   orders.push(order);
 
   res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+});
+
+// Create a pool (bucket) of database connections
+const pool = mysql2.createPool({
+    host: '***',
+    user: '***',
+    password: '***',
+    database: 'pizza_db',
+    port: 3306
+}).promise();
+
+// Database test route
+app.get('/db-test', async(req, res) => {
+
+    try {
+        const pizza_orders = await pool.query('SELECT * FROM orders');
+        res.send(pizza_orders[0]);
+    } catch(err) {
+        console.error('Database error: ', err);
+    }
 });
 
 // Start the server and listen on the specified port 
