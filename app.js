@@ -26,12 +26,12 @@ const orders = []; // Array to store orders in memory
 // req: contains information about the incoming request
 // res: allows us to send back a response to the client
 app.get('/', (req, res) => {
-  res.sendFile(`${import.meta.dirname}/views/home.html`);
+  res.render('home');
 });
 
 // Contact route
 app.get('/contact-us', (req, res) => {
-  res.sendFile(`${import.meta.dirname}/views/contact.html`);
+  res.render('contact');
 });
 
 
@@ -56,7 +56,7 @@ app.post('/submit-order', (req, res) => {
   };
   orders.push(order);
 
-  res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+  res.render('confirmation', { order: order });
 });
 
 // Create a pool (bucket) of database connections
