@@ -13,6 +13,9 @@ app.use(express.static('public'));
 //Allow express to read form data
 app.use(express.urlencoded({ extended: true }));
 
+// EJS view engine
+app.set('view engine', 'ejs');
+
 const orders = []; // Array to store orders in memory
 
 // Define a default "route" ('/')
