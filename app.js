@@ -26,8 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 // EJS view engine
 app.set('view engine', 'ejs');
 
-const orders = []; // Array to store orders in memory
-
 // Define a default "route" ('/')
 // req: contains information about the incoming request
 // res: allows us to send back a response to the client
@@ -42,27 +40,32 @@ app.get('/contact-us', (req, res) => {
 
 
 // Admin route
-app.get('/admin', (req, res) => {
-  res.send(orders);
+app.get('/admin', async(req, res) => {
+
+  //Read all orders from the database
+  // Newest first
+  const orders = await pool.query('SELECT * FROM orders ORDER BY timestamp DESC');
+  res.render('admin', { orders: orders[0] });
 });
 
 // Submit order route
-app.post('/submit-order', (req, res) => {
+app.post('/submit-order', async (req, res) => {
   
-  // Create JSON object to store order data
-  const order = {
-    fname: req.body.fname,
-    lname: req.body.lname,
-    email: req.body.email,
-    method: req.body.method,
-    size: req.body.size,
-    toppings: req.body.toppings ? req.body.toppings : "none",
-    comment: req.body.comment ? req.body.comment : "none",
-    timestamp: new Date()
-  };
-  orders.push(order);
+  const order = req.body;
+  // Create an array to store order data
+  const params = [
+    order.fname,
+    order.lname,
+    order.email,
+    order.method,
+    order.size,
+    Array.isArray(order.toppings) ? order.toppings.join(', ') : "none"
+];
+  const sql = `INSERT INTO  orders (fname, lname, email, method, size, toppings) VALUES (?, ?, ?, ?, ?, ?)`;
+  const result = await pool.execute(sql, params);
 
-  res.render('confirmation', { order: order });
+  res.render('confirmation', { order });
+
 });
 
 // Create a pool (bucket) of database connections
