@@ -60,7 +60,7 @@ app.post('/submit-order', (req, res) => {
 });
 
 // Create a pool (bucket) of database connections
-const pool = mysql2.createPool({
+const pool = mysql.createPool({
     host: '***',
     user: '***',
     password: '***',
