@@ -2,7 +2,7 @@
 import express from 'express';
 
 // Import MySQL
-import mysql from 'mysql';
+import mysql2 from 'mysql2';
 
 
 // Create an instance of an Express application
@@ -60,7 +60,7 @@ app.post('/submit-order', (req, res) => {
 });
 
 // Create a pool (bucket) of database connections
-const pool = mysql.createPool({
+const pool = mysql2.createPool({
     host: '***',
     user: '***',
     password: '***',
